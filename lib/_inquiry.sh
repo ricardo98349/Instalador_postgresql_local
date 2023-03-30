@@ -11,7 +11,7 @@ get_postgres_root_password() {
 get_link_git() {
   
   print_banner
-  printf "${WHITE} 💻 Insira o link do GITHUB do Whamulti que deseja instalar:${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Insira o link do GITHUB que deseja instalar:${GRAY_LIGHT}"
   printf "\n\n"
   read -p "> " link_git
 }
@@ -43,7 +43,7 @@ get_max_user() {
 get_frontend_url() {
   
   print_banner
-  printf "${WHITE} 💻 Digite o subdomínio do FRONTEND/PAINEL para a ${instancia_add}:${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Digite o IP do FRONTEND/PAINEL para a ${instancia_add} (Exemplo: 192.168.75.130):${GRAY_LIGHT}"
   printf "\n\n"
   read -p "> " frontend_url
 }
@@ -51,7 +51,7 @@ get_frontend_url() {
 get_backend_url() {
   
   print_banner
-  printf "${WHITE} 💻 Digite o subdomínio do BACKEND/API para a ${instancia_add}:${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Digite o IP do BACKEND/API para a ${instancia_add} (Exemplo: 192.168.75.130):${GRAY_LIGHT}"
   printf "\n\n"
   read -p "> " backend_url
 }
@@ -125,7 +125,7 @@ get_empresa_dominio() {
 get_alter_frontend_url() {
   
   print_banner
-  printf "${WHITE} 💻 Digite o NOVO subdomínio do FRONTEND/PAINEL para a ${empresa_dominio}:${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Digite o NOVO IP do FRONTEND/PAINEL para a ${empresa_dominio} (Exemplo: 192.168.75.130):${GRAY_LIGHT}"
   printf "\n\n"
   read -p "> " alter_frontend_url
 }
@@ -133,7 +133,7 @@ get_alter_frontend_url() {
 get_alter_backend_url() {
   
   print_banner
-  printf "${WHITE} 💻 Digite o NOVO subdomínio do BACKEND/API para a ${empresa_dominio}:${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Digite o NOVO IP do BACKEND/API para a ${empresa_dominio} (Exemplo: 192.168.75.130):${GRAY_LIGHT}"
   printf "\n\n"
   read -p "> " alter_backend_url
 }

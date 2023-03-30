@@ -85,20 +85,35 @@ frontend_set_env() {
   sleep 2
 
   # ensure idempotency
-  backend_url=$(echo "${backend_url/https:\/\/}")
+  backend_url=$(echo "${backend_url/http:\/\/}")
   backend_url=${backend_url%%/*}
-  backend_url=https://$backend_url
+  backend_url=http://$backend_url
 
 sudo su - deploy << EOF
   cat <<[-]EOF > /home/deploy/${instancia_add}/frontend/.env
 NODE_ENV=
-REACT_APP_BACKEND_URL=${backend_url}
-REACT_APP_HOURS_CLOSE_TICKETS_AUTO=24
+REACT_APP_BACKEND_URL=${backend_url}:${backend_port}
+REACT_APP_HOURS_CLOSE_TICKETS_AUTO=
 SERVER_PORT=${frontend_port}
 REACT_APP_USER_TOKEN=
 [-]EOF
 EOF
 
+  sleep 2
+  sudo su - deploy << EOF
+cat <<[-]EOF > /home/deploy/${instancia_add}/frontend/server.js
+//simple express server to run frontend production build;
+const express = require("express");
+const path = require("path");
+const app = express();
+app.use(express.static(path.join(__dirname, "build")));
+app.get("/*", function (req, res) {
+	res.sendFile(path.join(__dirname, "build", "index.html"));
+});
+app.listen(${frontend_port});
+
+[-]EOF
+EOF
   sleep 2
 
 
@@ -130,44 +145,4 @@ EOF
 EOF
   sleep 2
   
-}
-
-#######################################
-# sets up nginx for frontend
-# Arguments:
-#   None
-#######################################
-frontend_nginx_setup() {
-  print_banner
-  printf "${WHITE} 💻 Configurando nginx (frontend)...${GRAY_LIGHT}"
-  printf "\n\n"
-
-  sleep 2
-
-  frontend_hostname=$(echo "${frontend_url/https:\/\/}")
-
-sudo su - root << EOF
-
-cat > /etc/nginx/sites-available/${instancia_add}-frontend << 'END'
-server {
-  server_name $frontend_hostname;
-
-  location / {
-    proxy_pass http://127.0.0.1:${frontend_port};
-    proxy_http_version 1.1;
-    proxy_set_header Upgrade \$http_upgrade;
-    proxy_set_header Connection 'upgrade';
-    proxy_set_header Host \$host;
-    proxy_set_header X-Real-IP \$remote_addr;
-    proxy_set_header X-Forwarded-Proto \$scheme;
-    proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
-    proxy_cache_bypass \$http_upgrade;
-  }
-}
-END
-
-ln -s /etc/nginx/sites-available/${instancia_add}-frontend /etc/nginx/sites-enabled
-EOF
-
-  sleep 2
 }
