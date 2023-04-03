@@ -42,6 +42,8 @@ sudo su - root <<EOF
   psql
   CREATE USER ${instancia_add} SUPERUSER INHERIT CREATEDB CREATEROLE;
   ALTER USER ${instancia_add} PASSWORD '${postgres_root_password}';
+  SET TIMEZONE TO 'America/Sao_Paulo';
+  SELECT NOW();
   \q
   exit
 EOF
