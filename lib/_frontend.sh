@@ -95,7 +95,6 @@ NODE_ENV=
 REACT_APP_BACKEND_URL=${backend_url}:${backend_port}
 REACT_APP_HOURS_CLOSE_TICKETS_AUTO=
 SERVER_PORT=${frontend_port}
-REACT_APP_USER_TOKEN=
 [-]EOF
 EOF
 
