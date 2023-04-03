@@ -5,7 +5,7 @@ cd /home
 ```
 
 ```bash
-apt update -y && apt upgrade -y && apt autoremove -y && apt install git -y && git clone https://github.com/ricardo98349/Instalador_local.git instalador && sudo chmod -R 777 instalador && cd instalador && sudo ./install_primaria
+apt update -y && apt upgrade -y && apt autoremove -y && apt install git -y && git clone https://github.com/ricardo98349/Instalador_postgresql_local.git instalador && sudo chmod -R 777 instalador && cd instalador && sudo ./install_primaria
 ```
 
 
@@ -17,5 +17,5 @@ cd /home
 ```
 
 ```bash
-apt update -y && apt upgrade -y && apt autoremove -y && rm -rf instalador && git clone https://github.com/ricardo98349/Instalador_local.git instalador && sudo chmod -R 777 instalador && cd instalador && sudo ./install_instancia
+apt update -y && apt upgrade -y && apt autoremove -y && rm -rf instalador && git clone https://github.com/ricardo98349/Instalador_postgresql_local.git instalador && sudo chmod -R 777 instalador && cd instalador && sudo ./install_instancia
 ```
