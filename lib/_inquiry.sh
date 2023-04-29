@@ -68,7 +68,7 @@ get_frontend_port() {
 get_backend_port() {
   
   print_banner
-  printf "${WHITE} 💻 Digite a porta do BACKEND para esta instancia; Ex: 8081 ${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Digite a porta do BACKEND para esta instancia; Ex: 4001 ${GRAY_LIGHT}"
   printf "\n\n"
   read -p "> " backend_port
 }
