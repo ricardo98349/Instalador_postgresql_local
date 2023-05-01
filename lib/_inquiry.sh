@@ -27,7 +27,7 @@ get_instancia_add() {
 get_max_whats() {
   
   print_banner
-  printf "${WHITE} 💻 Informe a Qtde de Conexões/Whats que a ${instancia_add} poderá cadastrar (Exemplo: 10000):${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Informe a Qtde de Conexões/Whats que a ${instancia_add} poderá cadastrar (Exemplo: 1000):${GRAY_LIGHT}"
   printf "\n\n"
   read -p "> " max_whats
 }
@@ -35,7 +35,7 @@ get_max_whats() {
 get_max_user() {
   
   print_banner
-  printf "${WHITE} 💻 Informe a Qtde de Usuarios/Atendentes que a ${instancia_add} poderá cadastrar (Exemplo: 10000):${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Informe a Qtde de Usuarios/Atendentes que a ${instancia_add} poderá cadastrar (Exemplo: 1000):${GRAY_LIGHT}"
   printf "\n\n"
   read -p "> " max_user
 }
@@ -68,7 +68,7 @@ get_frontend_port() {
 get_backend_port() {
   
   print_banner
-  printf "${WHITE} 💻 Digite a porta do BACKEND para esta instancia; Ex: 4001 ${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Digite a porta do BACKEND para a ${instancia_add}; Ex: 4001 ${GRAY_LIGHT}"
   printf "\n\n"
   read -p "> " backend_port
 }
@@ -76,7 +76,7 @@ get_backend_port() {
 get_redis_port() {
   
   print_banner
-  printf "${WHITE} 💻 Digite a porta do REDIS/AGENDAMENTO MSG para a ${instancia_add}; Ex: 5001 A 5999 ${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Digite a porta do REDIS/AGENDAMENTO MSG para a ${instancia_add}; Ex: 5001 ${GRAY_LIGHT}"
   printf "\n\n"
   read -p "> " redis_port
 }
